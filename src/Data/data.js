@@ -1,8 +1,8 @@
-  let src1 = 'build/1.jpg';
-  let src2 = 'build/play.png';
-  let src3 = 'build/music.png';
-  let src4 = 'build/more.png';
-  let src5 = 'build/personnage.png';
+  let src1 = '/public/build/1.jpg';
+  let src2 = '/public/build/play.png';
+  let src3 = '/public/build/music.png';
+  let src4 = '/public/build/more.png';
+  let src5 = '/public/build/personnage.png';
 
     import { faHouse } from '@fortawesome/free-solid-svg-icons';
 
