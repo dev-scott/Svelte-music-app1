@@ -1,12 +1,13 @@
 <script>
-  // let src1 = '/public/build/1.jpg';
-  // let src2 = '/public/build/play.png';
-  // let src3 = '/public/build/music.png';
-  // let src4 = '/public/build/more.png';
-  // let src5 = '/public/build/personnage.png';
+  let src1 = '/build/1.jpg';
+  let src2 = '/build/play.png';
+  let src3 = '/build/music.png';
+  let src4 = '/build/more.png';
+  let src5 = '/build/personnage.png';
+
   //     import Fa from 'svelte-fa/src/fa.svelte'
   // import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons/index.es'
- 
+
   import Fa from 'svelte-fa';
   import { faMusic } from '@fortawesome/free-solid-svg-icons';
   import { faPlay } from '@fortawesome/free-solid-svg-icons';
@@ -20,14 +21,10 @@
   import { faVolumeDown } from '@fortawesome/free-solid-svg-icons';
   // import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 
+  import { artists } from '../Data/data';
+  import { songCategorie } from '../Data/data';
 
-
-import {artists} from '../Data/data';
-  import {songCategorie} from '../Data/data'
-
-  import {songs} from '../Data/data'
-
-
+  import { songs } from '../Data/data';
 </script>
 
 <header>
@@ -58,40 +55,21 @@ import {artists} from '../Data/data';
       </h4>
     </div>
 
-
-
-
     <div class="menu_song">
-
       {#each songs as single (single.id)}
-        
+        <li class="songItem">
+          <span>{single.numero}</span>
+          <img src={single.img} alt="" />
+          <h5>
+            {single.title}
 
+            <div class="subtitle">{single.subtitle}</div>
 
-      <li class="songItem">
-        <span>{single.numero}</span>
-        <img src={single.img} alt="" />
-        <h5>
-
-
-          {single.title}
-
-          <div class="subtitle">{single.subtitle}</div>
-
-          <img src={single.img} id="2" class="faPlay" alt="" />
-        </h5>
-      </li>
-
-            {/each}
-
-
+            <img src={single.img} id="2" class="faPlay" alt="" />
+          </h5>
+        </li>
+      {/each}
     </div>
-
-
-
-
-
-
-    
   </div>
   <div class="song_side">
     <nav>
@@ -125,67 +103,42 @@ import {artists} from '../Data/data';
       </div>
     </div>
 
+    {#each songCategorie as song (song.id)}
+      <div class="popular_song">
+        <div class="h4">
+          <h4>{song.title}</h4>
 
-
-
-
-    {#each songCategorie as song  (song.id)}
-      
-    <div class="popular_song">
-
-
-
-
-
-      <div class="h4">
-        <h4>{song.title}</h4>
-
-        <div class="btn_s">
-          <span id="left_scroll">
-            <Fa color="white" icon={faArrowLeftLong} />
-          </span>
-          <span id="right_scroll">
-            <Fa color="white" icon={faArrowRightLong} />
-          </span>
-        </div>
-      </div>
-
-
-
-      <div class="pop_song">
-
-
-        {#each artists  as artist (artist.id) }
-          
-
-        <li class="songItem">
-          <div class="img_play">
-            <img src={artist.img} alt="Sado scott" />
-
-            <span class=" bi playListPlay" id="7">
-              <Fa class="faIcon" color="white" icon={faPlay} />
+          <div class="btn_s">
+            <span id="left_scroll">
+              <Fa color="white" icon={faArrowLeftLong} />
+            </span>
+            <span id="right_scroll">
+              <Fa color="white" icon={faArrowRightLong} />
             </span>
           </div>
+        </div>
 
-          <h5>
-            {artist.title} <br />
-            <div class="subtitle">{artist.subtitle}</div>
-            <!-- <img src={src2} id="10" class="faPlay" alt="" /> -->
-          </h5>
-        </li>
+        <div class="pop_song">
+          {#each artists as artist (artist.id)}
+            <li class="songItem">
+              <div class="img_play">
+                <img src={artist.img} alt="Sado scott" />
 
-      {/each}
+                <span class=" bi playListPlay" id="7">
+                  <Fa class="faIcon" color="white" icon={faPlay} />
+                </span>
+              </div>
 
-     
+              <h5>
+                {artist.title} <br />
+                <div class="subtitle">{artist.subtitle}</div>
+                <!-- <img src={src2} id="10" class="faPlay" alt="" /> -->
+              </h5>
+            </li>
+          {/each}
+        </div>
       </div>
-
-
-
-
-    </div>
-
-        {/each}
-
+    {/each}
 
     <!-- <div class="popular_song">
       <div class="h4">
@@ -226,10 +179,6 @@ import {artists} from '../Data/data';
 
 
     </div> -->
-
-
-
-
   </div>
 
   <div class="master_played">
